@@ -72,6 +72,7 @@ flutter:
       - assets/Email/frame_copy.png
       - assets/Email/icon_copy.png
       - assets/choose_password/frame_copy.png
+      - assets/set_pin/ellipse_copy.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -1,3 +1,4 @@
+import 'package:alieus_captials_09_08/view/checkbox_test.dart';
 import 'package:alieus_captials_09_08/view/select_country.dart';
 import 'package:alieus_captials_09_08/view/sign_up_.dart';
 import 'package:alieus_captials_09_08/view/signup_help.dart';
@@ -58,7 +59,8 @@ class login_view extends StatelessWidget {
                     
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color.fromARGB(255, 207, 170, 111),
+                        
+                        backgroundColor: Color(0xFFF3C96B),
                         foregroundColor: Color.fromARGB(255, 0, 0, 0),
                         textStyle: TextStyle(
                           fontSize: 22,
