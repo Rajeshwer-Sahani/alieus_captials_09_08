@@ -55,7 +55,7 @@ class login_view extends StatelessWidget {
                     bottom: 150,
                     left: 10,
                     width: 380,
-                    height: 50,
+                    height: 56,
                     
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(

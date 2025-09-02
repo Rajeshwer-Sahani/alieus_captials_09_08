@@ -28,7 +28,7 @@ class set_pin extends StatelessWidget{
                     Image.asset("assets/set_pin/ellipse_copy.png"), 
                   ],
                 )
-                 )
+                 )    
             ],
           ),
         ),

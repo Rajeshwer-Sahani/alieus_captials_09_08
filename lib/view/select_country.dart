@@ -1,5 +1,7 @@
 import 'package:alieus_captials_09_08/main.dart';
+import 'package:alieus_captials_09_08/view/checkbox_test.dart';
 import 'package:alieus_captials_09_08/view/mail_page.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:country_picker/country_picker.dart';
 
@@ -126,8 +128,7 @@ class _SelectCountryState extends State<SelectCountry> {
                           borderRadius: BorderRadius.circular(10),
                           borderSide: BorderSide.none,
                         ),
-                        prefixIcon: 
-                        GestureDetector(
+                        prefixIcon: GestureDetector(
                           behavior: HitTestBehavior.translucent,
                           onTap: showPicker,
                           child: Container(
@@ -166,83 +167,134 @@ class _SelectCountryState extends State<SelectCountry> {
                       'assets/country_dropdown/Frame_copy.png',
                     ),
                   ),
+                    
+                    Padding(padding: EdgeInsets.only(top: 650),
+                    child: 
+                // Continue Button (disabled until agree)
+            ElevatedButton(
+              onPressed: isChecked
+                  ? () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => MailPage()),
+                      );
+                    }
+                  : null,
+              style: ElevatedButton.styleFrom(
+                minimumSize: Size(double.infinity, 56),
+                backgroundColor: isChecked ? Colors.amber : Colors.grey,
+              ),
+              child: Text(
+                "Continue",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            ),
+          
+
+              SizedBox(height: 5,),
 
                   Positioned(
-                    left: 20,
-                    right: 20,
-                    bottom: 80,
+                    left: 10,
+                    right: 10,
+                    bottom: 230,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                           IconButton(
+                  icon: Icon(
+                    isChecked
+                        ? Icons.check_box
+                        : Icons.check_box_outline_blank,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      isChecked = !isChecked;
+                    });
+                  },
+                ),
+                Expanded(
+                  child: Text(
+                    "I declare and confirm that I am not a citizen or "
+                    "resident of the US for tax purpose.",
+                    style: TextStyle(color: Colors.white, fontSize: 13),
+                  ),
+                ),
+                      ],
+                    ),
+                  ),
+                  Positioned(
+                    left: 10,
+                    right: 10,
+                    bottom: 30,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         Row(
                           children: [
-                            Checkbox(
-                              value: isChecked,
-                              onChanged: (value) {
-                                setState(() {
-                                  isChecked = value ?? false;
-                                });
-                              },
-                            ),
-                            Expanded( 
+                            Expanded(
                               child: Text.rich(
-                        TextSpan(
-                          style: TextStyle(color: Colors.white70, fontSize: 13),
-                          children: [
-                            TextSpan(
-                                text:
-                                    "Based on the selected country of residence, you are registering with PHEONIXFX, regulated by the Seychelles FSA\n\n"),
-                            TextSpan(
-                                text:
-                                    "By clicking Continue you confirm that you have read, understood, and agree with all the information in the "),
-                            TextSpan(
-                              text: "Client Agreement",
-                              style: TextStyle(color: Colors.orangeAccent),
-                              // you can wrap with GestureRecognizer for tap
-                            ),
-                            TextSpan(
-                                text:
-                                    " and the service terms and conditions for your country listed in the following documents: "),
-                            TextSpan(
-                              text: "General Business Terms",
-                              style: TextStyle(color: Colors.orangeAccent),
-                            ),
-                            TextSpan(text: " and "),
-                            TextSpan(
-                              text: "Partnership Agreement.",
-                              style: TextStyle(color: Colors.orangeAccent),
-                            ),
-                          ],
-                        ),
-                      ),
+                                TextSpan(
+                                  style: TextStyle(
+                                    color: Colors.white70,
+                                    fontSize: 10,
+                                  ),
+                                  children: [
+                                    TextSpan(
+                                      text:
+                                          "Based on the selected country of residence, you are registering with PHEONIXFX, regulated by the Seychelles FSA\n\n",
+                                    ),
+                                    TextSpan(
+                                      text:
+                                          "By clicking Continue you confirm that you have read, understood, and agree with all the information in the ",
+                                    ),
+                                    TextSpan(
+                                      text: "Client Agreement",
+                                      style: TextStyle(
+                                        color: Colors.orangeAccent,
+                                      ),
+                                      // you can wrap with GestureRecognizer for tap
+                                    ),
+                                    TextSpan(
+                                      text:
+                                          " and the service terms and conditions for your country listed in the following documents: ",
+                                    ),
+                                    TextSpan(
+                                      text: "General Business Terms",
+                                      style: TextStyle(
+                                        color: Colors.orangeAccent,
+                                      ),
+                                    ),
+                                    TextSpan(text: " and "),
+                                    TextSpan(
+                                      text: "Partnership Agreement.",
+                                      style: TextStyle(
+                                        color: Colors.orangeAccent,
+                                      ),
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => WebPage(
+                                                title: "Partnership Agreement",
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ),
                           ],
                         ),
                         SizedBox(height: 20),
-
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Color.fromARGB(255, 207, 170, 111),
-                          ),
-                          onPressed: isChecked
-                              ? () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => MailPage(),
-                                    ),
-                                  );
-                                }
-                              : null,
-                          child: Text(
-                            "Continue",
-                            style: TextStyle(
-                              color: Color.fromARGB(255, 0, 0, 0),
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
                       ],
                     ),
                   ),
@@ -252,6 +304,30 @@ class _SelectCountryState extends State<SelectCountry> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class NextPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Next Page")),
+      body: Center(child: Text("Welcome to the next page!")),
+    );
+  }
+}
+
+// Dummy WebPage (replace with WebView if needed)
+class WebPage extends StatelessWidget {
+  final String title;
+  WebPage({required this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text(title)),
+      body: Center(child: Text("This is the $title page")),
     );
   }
 }

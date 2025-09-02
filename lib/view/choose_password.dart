@@ -69,7 +69,7 @@ class choose_password  extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(10),
                                   borderSide: BorderSide.none,
                                 ),
-                                prefixIcon: Icon(Icons.lock, color: Colors.white,size: 20,)
+                                prefixIcon: Icon(Icons.lock, color: Colors.white,size: 20)
                               ),
                             ),
 
