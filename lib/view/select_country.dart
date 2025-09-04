@@ -253,12 +253,22 @@ class _SelectCountryState extends State<SelectCountry> {
                                       text:
                                           "By clicking Continue you confirm that you have read, understood, and agree with all the information in the ",
                                     ),
-                                    TextSpan(
+                                   TextSpan(
                                       text: "Client Agreement",
                                       style: TextStyle(
                                         color: Colors.orangeAccent,
                                       ),
-                                      // you can wrap with GestureRecognizer for tap
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => WebPage(
+                                                title: "Client Agreement",
+                                              ),
+                                            ),
+                                          );
+                                        },
                                     ),
                                     TextSpan(
                                       text:
@@ -269,6 +279,17 @@ class _SelectCountryState extends State<SelectCountry> {
                                       style: TextStyle(
                                         color: Colors.orangeAccent,
                                       ),
+                                      recognizer: TapGestureRecognizer() 
+                                      ..onTap = () {
+                                        Navigator.push(
+                                          context, 
+                                          MaterialPageRoute(
+                                            builder: (context)=>WebPage(
+                                              title: "General Business Terms"
+                                            )
+                                          ),
+                                        );
+                                      }
                                     ),
                                     TextSpan(text: " and "),
                                     TextSpan(
@@ -308,15 +329,19 @@ class _SelectCountryState extends State<SelectCountry> {
   }
 }
 
-class NextPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("Next Page")),
-      body: Center(child: Text("Welcome to the next page!")),
-    );
-  }
-}
+
+// // Dummy Next Page
+// class NextPage extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(title: Text("Next Page")),
+//       body: Center(child: Text("Welcome to the next page!"),
+      
+//       ),
+//     );
+//   }
+// }
 
 // Dummy WebPage (replace with WebView if needed)
 class WebPage extends StatelessWidget {
@@ -326,8 +351,18 @@ class WebPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(title)),
-      body: Center(child: Text("This is the $title page")),
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(title: Text(title,style: TextStyle( color: Color.fromARGB(255, 255, 255, 255),),),
+      iconTheme: IconThemeData(color: Colors.white),
+      backgroundColor: Colors.transparent,
+      ),
+      backgroundColor: Colors.black,
+      body: Center(
+        child: Text("This is the $title page",
+      style: TextStyle(color: Colors.white),
+      ),
+      ),
+      
     );
   }
 }
