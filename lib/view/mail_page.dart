@@ -60,9 +60,12 @@ class _MailPageState extends State<MailPage> {
                       onPressed: (){
                         Navigator.push(context, MaterialPageRoute(builder: (context) => choose_password()),
                         );
-                      }, child: Text("Continue", 
+                      }, 
+                      child: Text("Continue", 
                     style: TextStyle(color: Color.fromARGB(255, 0, 0, 0), fontSize: 22, 
-                    fontWeight: FontWeight.bold),),),
+                    fontWeight: FontWeight.bold),
+                    ),
+                    ),
                   ),
                   
                   Container(

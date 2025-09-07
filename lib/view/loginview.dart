@@ -51,33 +51,48 @@ class login_view extends StatelessWidget {
                     child: Image.asset('assets/loginpage/trade_copy.png'),
                   ),
 
-                  Positioned(
-                    bottom: 150,
-                    left: 10,
-                    width: 380,
-                    height: 56,
-                    
+                  
+                    Padding(padding: EdgeInsetsGeometry.only(top: 670),
                     child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        
-                        backgroundColor: Color(0xFFF3C96B),
-                        foregroundColor: Color.fromARGB(255, 0, 0, 0),
-                        textStyle: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                          //color: Color.fromARGB(255, 0, 0, 0),
-                        ),
+                      style: ElevatedButton.styleFrom( 
+                         
+                        backgroundColor: Colors.transparent, // remove solid color
+                         shadowColor: Colors.transparent, // remove default shadow
+                       // foregroundColor: Color.fromARGB(255, 0, 0, 0),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
+                        borderRadius: BorderRadius.circular(30),
                         ),
                       ),
                       onPressed: () {
                         // Navigate to another screen
                          Navigator.push(context, MaterialPageRoute(builder: (context) => SelectCountry()));
                       },
-                      child: Text("login"),
+                      child: Ink(
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            colors:[
+                              Color(0xFFF3C96B),
+                                Color(0xFFD4A545),
+                            ]
+                           ),
+                           borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30),topRight: Radius.circular(30))
+                        ),
+                        child: Container(
+                            alignment: Alignment.center,
+                            height: 56,
+                            width: 600,
+                            child: Text(
+                            "login",
+                             style: TextStyle(color: Colors.black, fontSize: 22,fontWeight: FontWeight.bold),
+                           ),
+                        ),
+                      )
+                      
+                      
                     ),
                   ),
+
+                  
                   Positioned( bottom: 87, left: 10, width: 380, height: 50,
                     child: TextButton( style:  
                     TextButton.styleFrom(
@@ -92,6 +107,9 @@ class login_view extends StatelessWidget {
                   }, 
                   child: Text("Sing Up"))
                   ),
+
+
+
                   Positioned( bottom: 40, left:70,
                     child: TextButton( style: TextButton.styleFrom(
                       foregroundColor: Colors.white,
@@ -101,9 +119,11 @@ class login_view extends StatelessWidget {
                       )
                     ),
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder:(context) =>SignupHelp()));
+                        Navigator.push(context, MaterialPageRoute(builder:(context) => SelectCountry()));
                       }, 
-                      child: Text("Unable to Login and Sign up? Get help")))
+                      child: Text("Unable to Login and Sign up? Get help")),
+                      ),
+
                 ],
               ),
             ),

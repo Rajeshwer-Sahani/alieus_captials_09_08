@@ -111,6 +111,7 @@ class _SelectCountryState extends State<SelectCountry> {
                           SnackBar(
                             content: Text(
                               " +${country.phoneCode} $phonenumber",
+                              
                             ),
                           ),
                         );
@@ -168,31 +169,75 @@ class _SelectCountryState extends State<SelectCountry> {
                     ),
                   ),
                     
-                    Padding(padding: EdgeInsets.only(top: 650),
-                    child: 
+                    Padding(padding: EdgeInsets.only(top: 650,left: 10,right: 10),
+                    
                 // Continue Button (disabled until agree)
-            ElevatedButton(
-              onPressed: isChecked
-                  ? () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => MailPage()),
-                      );
-                    }
-                  : null,
-              style: ElevatedButton.styleFrom(
-                minimumSize: Size(double.infinity, 56),
-                backgroundColor: isChecked ? Colors.amber : Colors.grey,
-              ),
-              child: Text(
-                "Continue",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
+            // ElevatedButton(
+            //   onPressed: isChecked
+            //       ? () {
+            //           Navigator.push(
+            //             context,
+            //             MaterialPageRoute(builder: (context) => MailPage()),
+            //           );
+            //         }
+            //       : null,
+            //   style: ElevatedButton.styleFrom(
+            //     minimumSize: Size(double.infinity, 56), 
+            //     backgroundColor: isChecked ? Colors.amber : Colors.grey,
+                
+            //   ),
+            //   child: Text(
+            //     "Continue",
+            //     style: TextStyle(
+            //       color: Colors.black,
+            //       fontSize: 18,
+            //       fontWeight: FontWeight.bold,
+            //     ),
+            //   ),
+            // ),
+
+           child:  Column(
+              children: [
+                 if(isChecked)...{
+
+                          // Gradient Continue Button
+                      GestureDetector(
+                        onTap: isChecked
+                            ? () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => MailPage()),
+                                );
+                              }
+                            : null,
+                            
+                        child: Container(
+                          padding: EdgeInsets.symmetric(vertical: 15),
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [
+                                Color(0xFFF3C96B),
+                                Color(0xFFD4A545),
+                              ],
+                            ),
+                            borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30),topRight: Radius.circular(30)),
+                          ),
+                          alignment: Alignment.center,
+                          child: Text(
+                            "Continue",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                              
+                            ),
+                          ),
+                        ),
+                      ),
+                      },
+              ],
+            )
             ),
           
 
@@ -228,6 +273,8 @@ class _SelectCountryState extends State<SelectCountry> {
                       ],
                     ),
                   ),
+
+
                   Positioned(
                     left: 10,
                     right: 10,
@@ -357,11 +404,18 @@ class WebPage extends StatelessWidget {
       backgroundColor: Colors.transparent,
       ),
       backgroundColor: Colors.black,
-      body: Center(
-        child: Text("This is the $title page",
-      style: TextStyle(color: Colors.white),
-      ),
-      ),
+      body: Column(
+        children: [
+          Expanded(
+                 child: Center(
+                 child: Text("This is the $title page",
+                 style: TextStyle(color: Colors.white),
+                 ),
+                  ),
+                )
+            ],
+        ),
+      
       
     );
   }
