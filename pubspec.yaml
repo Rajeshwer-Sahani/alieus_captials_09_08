@@ -41,6 +41,8 @@ dependencies:
   get: ^4.7.2
   adaptive_theme: ^3.7.1+2
   provider: ^6.1.5+1
+  local_auth: ^2.3.0
+  pin_code_fields: ^8.0.1
   #local_auth: ^2.3.0
   #flutter_screen_lock: ^latest_version # or flutter_app_lock
 
