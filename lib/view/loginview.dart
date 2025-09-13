@@ -51,16 +51,22 @@ class login_view extends StatelessWidget {
                     child: Image.asset('assets/loginpage/trade_copy.png'),
                   ),
 
-                  
-                    Padding(padding: EdgeInsetsGeometry.only(top: 670),
+                  Positioned(
+                    bottom: 150,
+                    left: 10,
+                    width: 380,
+                    height: 56,
+                    
                     child: ElevatedButton(
-                      style: ElevatedButton.styleFrom( 
-                         
-                        backgroundColor: Colors.transparent, // remove solid color
-                         shadowColor: Colors.transparent, // remove default shadow
-                       // foregroundColor: Color.fromARGB(255, 0, 0, 0),
+                      style: ElevatedButton.styleFrom(
+                        padding: EdgeInsets.zero,     //zaroori hai bcz By default ElevatedButton apne andar thoda extra padding add karta hai.Agar hum gradient ka Ink/Container use karte hain aur padding ko remove nahi karte, toh gradient poore button ko cover nahi karega (chhoti si white/transparent gap reh jaayegi).
+                        backgroundColor: Colors.transparent,  // remove solid background
+                        foregroundColor: Color.fromARGB(255, 0, 0, 0),
+                        
+                        // same radius for gradient
                         shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
+                          borderRadius: BorderRadius.only( bottomLeft: Radius.circular(30),
+                              topRight: Radius.circular(30))
                         ),
                       ),
                       onPressed: () {
@@ -71,24 +77,23 @@ class login_view extends StatelessWidget {
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
                             colors:[
-                              Color(0xFFF3C96B),
+                                Color(0xFFF3C96B),
                                 Color(0xFFD4A545),
                             ]
-                           ),
-                           borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30),topRight: Radius.circular(30))
+                             ),
+                             borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(30),
+                              topRight: Radius.circular(30))
                         ),
                         child: Container(
-                            alignment: Alignment.center,
-                            height: 56,
-                            width: 600,
-                            child: Text(
-                            "login",
-                             style: TextStyle(color: Colors.black, fontSize: 22,fontWeight: FontWeight.bold),
-                           ),
+                          alignment: Alignment.center,
+                          child: Text("login",
+                      style: TextStyle( fontSize: 22, fontWeight: FontWeight.bold,
+                          //color: Color.fromARGB(255, 0, 0, 0),
+                          ),
+                        ),
                         ),
                       )
-                      
-                      
                     ),
                   ),
 
@@ -109,7 +114,6 @@ class login_view extends StatelessWidget {
                   ),
 
 
-
                   Positioned( bottom: 40, left:70,
                     child: TextButton( style: TextButton.styleFrom(
                       foregroundColor: Colors.white,
@@ -119,7 +123,7 @@ class login_view extends StatelessWidget {
                       )
                     ),
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder:(context) => SelectCountry()));
+                        Navigator.push(context, MaterialPageRoute(builder:(context) => SignupHelp()));
                       }, 
                       child: Text("Unable to Login and Sign up? Get help")),
                       ),

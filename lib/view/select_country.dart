@@ -221,7 +221,9 @@ class _SelectCountryState extends State<SelectCountry> {
                                 Color(0xFFD4A545),
                               ],
                             ),
-                            borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30),topRight: Radius.circular(30)),
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(30),
+                              topRight: Radius.circular(30)),
                           ),
                           alignment: Alignment.center,
                           child: Text(

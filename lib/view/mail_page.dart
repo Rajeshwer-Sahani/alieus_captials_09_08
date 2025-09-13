@@ -55,16 +55,39 @@ class _MailPageState extends State<MailPage> {
                     child: ElevatedButton( 
                       style: 
                             ElevatedButton.styleFrom(
-                        backgroundColor: Color.fromARGB(255, 207, 170, 111),
+                              padding: EdgeInsets.zero,    //zaroori hai bcz By default ElevatedButton apne andar thoda extra padding add karta hai.Agar hum gradient ka Ink/Container use karte hain aur padding ko remove nahi karte, toh gradient poore button ko cover nahi karega (chhoti si white/transparent gap reh jaayegi).
+                        backgroundColor: Colors.transparent,   // remove solid background
+                        shape: RoundedRectangleBorder( // same radius for gradient
+                          borderRadius: BorderRadiusGeometry.only(
+                            bottomLeft: Radius.circular(30),
+                            topRight: Radius.circular(30))
+                        )
                       ),
+
                       onPressed: (){
                         Navigator.push(context, MaterialPageRoute(builder: (context) => choose_password()),
                         );
                       }, 
-                      child: Text("Continue", 
-                    style: TextStyle(color: Color.fromARGB(255, 0, 0, 0), fontSize: 22, 
+                      
+                      child: Ink(
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(colors:[
+                            Color(0xFFF3C96B),
+                            Color(0xFFD4A545),
+                          ] ),
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(30),
+                            topRight: Radius.circular(30))
+                        ),
+                        child: Container(
+                          alignment: Alignment.center,
+                          child: Text("Continue", 
+                    style: TextStyle(color: Color.fromARGB(255, 0, 0, 0), fontSize: 18, 
                     fontWeight: FontWeight.bold),
                     ),
+                        ),
+                      ),
+                      
                     ),
                   ),
                   

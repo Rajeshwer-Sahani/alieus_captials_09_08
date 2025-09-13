@@ -41,14 +41,35 @@ class choose_password  extends StatelessWidget {
                           Positioned( top: 672, left: 10, width: 384,height: 56,
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Color.fromARGB(255, 207, 170, 111),
+                                padding: EdgeInsets.zero,// zaroori hai
+                                backgroundColor: Colors.transparent,  // remove solid background
+                                shape: RoundedRectangleBorder(      // same radius for gradient
+                                  borderRadius: BorderRadiusGeometry.only(
+                                  bottomLeft: Radius.circular(30),topRight: Radius.circular(30))
+                                )
                               ),
                               onPressed: (){
                                  Navigator.push(context, MaterialPageRoute(builder: (context) => set_pin()),
                                  );
-                              }, child: Text("Continue", 
-                            style: TextStyle(color: Color.fromARGB(255, 0, 0, 0), fontSize: 22,
-                            fontWeight: FontWeight.bold),)
+                              }, 
+                              child: Ink(
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                    colors:[
+                                        Color(0xFFF3C96B),
+                                        Color(0xFFD4A545),
+                                    ] 
+                                    ),
+                                    borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(30),topRight: Radius.circular(30))
+                                ),
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  child: Text("Continue",
+                                  style: TextStyle(color: Colors.black,
+                                  fontSize: 18,fontWeight: FontWeight.bold),),
+                                ),
+                              ),
                             )
                           ),
 

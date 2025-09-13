@@ -1,5 +1,10 @@
 import 'package:alieus_captials_09_08/main.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screen_lock/flutter_screen_lock.dart';
+// import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
+
+
 
 void main(){
   runApp(MyApp());
@@ -26,6 +31,11 @@ class set_pin extends StatelessWidget{
                 child: Stack(
                   children: [
                     Image.asset("assets/set_pin/ellipse_copy.png"), 
+
+                    Positioned(top: 234,left: 105,
+                      child: Text("Enter your login passcode",style: TextStyle(color: Colors.white,fontSize: 17),) )
+
+                      
                   ],
                 )
                  )    
